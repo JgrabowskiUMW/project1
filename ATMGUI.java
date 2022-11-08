@@ -1,19 +1,18 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-public class LibraryGUI {
+public class ATMGUI {
 
     //create window
     public void createWindow() {
         JFrame frame = new JFrame("LibraryGUI");
+        frame.setLayout(new BorderLayout(10, 50));
+        frame.setSize(800, 100);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         JPanel panel = new JPanel();
-
         panel.setBorder(BorderFactory.createEmptyBorder(100,300,300,300));
-        panel.setLayout(new GridLayout(0,1));
-
+        panel.setLayout(new CardLayout());
         panel.setOpaque(true);
         panel.setBackground(Color.WHITE);
 
@@ -23,7 +22,6 @@ public class LibraryGUI {
         panel.add(label);
         frame.add(panel, BorderLayout.CENTER);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
