@@ -1,7 +1,7 @@
 package src;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Login {
 
@@ -13,6 +13,18 @@ public class Login {
 
     public void display() {
         accounts.displayProfles();
+    }
+
+    public void checkPin(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Pin: ");
+        int accountPin = Integer.parseInt(scan.nextLine());
+        for(Account check: accounts.getAccountList()) {
+            if(check.getPin() == accountPin) {
+                accounts.banking(check);
+            }
+        }
+
     }
 
 }

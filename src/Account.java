@@ -5,7 +5,7 @@ public class Account {
     private String firstName;
     private String lastName;
     private double amount;
-    private int accountNumber;
+    private static int accountNumber;
     private int pin;
 
     public Account(int u, int p, String f, String l, double a) {
@@ -54,5 +54,13 @@ public class Account {
 
     public void setPin(int pin) {
         this.pin = pin;
+    }
+
+    public void addToAccount(int deposit) {
+        amount += deposit;
+    }
+
+    public void withdrawFromAccount(int withdraw) {
+        amount -= withdraw;
     }
 }

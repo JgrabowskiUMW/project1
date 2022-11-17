@@ -12,6 +12,8 @@ public class Main {
         accounts.startingAccounts(file);
         boolean keepOn = true;
 
+        accounts.checkPin();
+
         //while(keepOn == true) {
         //try to run
 

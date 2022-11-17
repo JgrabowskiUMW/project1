@@ -36,21 +36,33 @@ public class Bank {
         }
     }
 
-    public void checkAccountNumberAndPin(){
+    public ArrayList<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void banking(Account user) {
         Scanner scan = new Scanner(System.in);
-        //System.out.println("Account Number: ");
-        //int accountNumber = Integer.parseInt(scan.nextLine());
-        System.out.println("Pin: ");
-        int accountPin = Integer.parseInt(scan.nextLine());
-        for(Account check: accountList) {
-            if(check.getPin() == accountPin) {
-                boolean clcye = true;
-                while(clcye == true) {
-                    System.out.println("Welcome " + check.getFirstName() + " " + check.getLastName());
-                    System.out.println("Would you like to Deposit, Withdrawal, or End Translation");
-                }
+        boolean clcye = true;
+        int saveSlot = 0;
+        for(int i = 0; i < accountList.size(); i++) {
+            if(accountList.get(i).equals(user)) {
+                saveSlot = i;
             }
         }
-
+        while(clcye == true) {
+            System.out.println("Welcome " + user.getFirstName() + " " + user.getLastName());
+            System.out.println("Would you like to\n1.Deposit\n2.Withdrawal\n3.End Translation");
+            int answer = scan.nextInt();
+            switch(answer) {
+                case 1:
+                    System.out.println("How much do you want to deposit: ");
+                    accountList.get(saveSlot).addToAccount(scan.nextInt());
+                case 2:
+                    System.out.println("How much do you want to deposit: ");
+                    accountList.get(saveSlot).addToAccount(scan.nextInt());
+                case 3:
+                    clcye = false;
+            }
+        }
     }
 }
