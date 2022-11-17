@@ -8,15 +8,16 @@ public class Main {
     public static void main(String[] args) {
 
         File file = new File("accountinfo");
-        Bank accounts = new Bank(file);
+        Login accounts = new Login();
+        accounts.startingAccounts(file);
         boolean keepOn = true;
 
         //while(keepOn == true) {
         //try to run
 
         //}
-        accounts.createAccounts();
-        accounts.displayProfles();
+
+        accounts.display();
         //ATMGUI window = new ATMGUI();
         //window.createWindow();
     }

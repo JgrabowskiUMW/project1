@@ -13,9 +13,6 @@ public class Bank {
     public Bank(File path) {
         filePath = path;
         accountList = new ArrayList<>();
-    }
-
-    public void createAccounts() {
         try {
             Scanner scanFile = new Scanner(filePath);
 
