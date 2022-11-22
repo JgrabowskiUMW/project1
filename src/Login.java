@@ -20,6 +20,7 @@ public class Login {
         System.out.println("Pin: ");
         int accountPin = Integer.parseInt(scan.nextLine());
         for(Account check: accounts.getAccountList()) {
+            // Checks if pin is in system.
             if(check.getPin() == accountPin) {
                 accounts.banking(check);
             }
