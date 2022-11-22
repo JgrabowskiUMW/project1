@@ -56,11 +56,14 @@ public class Account {
         this.pin = pin;
     }
 
-    public void addToAccount(int deposit) {
+    public void addToAccount(double deposit) {
         amount += deposit;
     }
 
-    public void withdrawFromAccount(int withdraw) {
-        amount -= withdraw;
+    public void withdrawFromAccount(double withdraw) {
+        if(amount - withdraw < 0)
+            System.out.println("Balance is insufflation to withdraw from.");
+        else
+            amount -= withdraw;
     }
 }
