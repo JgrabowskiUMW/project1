@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,10 +18,6 @@ public class ATMGUI {
         panel.setOpaque(true);
         panel.setBackground(Color.WHITE);
 
-        ImageIcon image = new ImageIcon(getClass().getResource("bookpic.jpg"));
-        JLabel label = new JLabel(image);
-
-        panel.add(label);
         frame.add(panel, BorderLayout.CENTER);
 
         frame.pack();
