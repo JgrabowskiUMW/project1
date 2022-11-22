@@ -16,6 +16,7 @@ public class Bank {
         try {
             Scanner scanFile = new Scanner(filePath);
 
+            // Scans user data from file.
             while(scanFile.hasNextLine()) {
                 int user = Integer.parseInt(scanFile.nextLine());
                 int pin = Integer.parseInt(scanFile.nextLine());
@@ -30,6 +31,9 @@ public class Bank {
         }
     }
 
+    /**
+     * Displays all accounts information.
+     */
     public void displayProfles() {
         for(Account display: accountList) {
             System.out.printf("%2s%n%2s%n%2d%n%2d%n$%2.2f%n%n", display.getFirstName(), display.getLastName(), display.getAccountNumber(), display.getPin(), display.getAmount());
@@ -42,26 +46,38 @@ public class Bank {
 
     public void banking(Account user) {
         Scanner scan = new Scanner(System.in);
-        boolean clcye = true;
+        // cycle is used to allow user to continue to deposit or withdrawal
+        boolean cycle = false;
+        // saveSlot is user who is logging in.
         int saveSlot = 0;
         for(int i = 0; i < accountList.size(); i++) {
             if(accountList.get(i).equals(user)) {
                 saveSlot = i;
+                cycle = true;
             }
         }
-        while(clcye == true) {
+        // If cycle is false.
+        if(!cycle) {
+            System.out.println("No account");
+        }
+        while(cycle) {
             System.out.println("Welcome " + user.getFirstName() + " " + user.getLastName());
             System.out.println("Would you like to\n1.Deposit\n2.Withdrawal\n3.End Translation");
             int answer = scan.nextInt();
             switch(answer) {
                 case 1:
                     System.out.println("How much do you want to deposit: ");
-                    accountList.get(saveSlot).addToAccount(scan.nextInt());
+                    accountList.get(saveSlot).addToAccount(scan.nextDouble());
+                    System.out.println(String.format("%.2f", accountList.get(saveSlot).getAmount()));
+                    break;
                 case 2:
-                    System.out.println("How much do you want to deposit: ");
-                    accountList.get(saveSlot).addToAccount(scan.nextInt());
+                    System.out.println("How much do you want to withdrawal: ");
+                    accountList.get(saveSlot).withdrawFromAccount(scan.nextDouble());
+                    System.out.println(String.format("%.2f", accountList.get(saveSlot).getAmount()));
+                    break;
                 case 3:
-                    clcye = false;
+                    cycle = false;
+                    break;
             }
         }
     }
