@@ -11,10 +11,16 @@ public class Login {
         accounts = new Bank(f);
     }
 
+    /**
+     * Displays profiles of all accounts.
+     */
     public void display() {
-        accounts.displayProfles();
+        accounts.displayProfiles();
     }
 
+    /**
+     * Checks Pin that user inputs
+     */
     public void checkPin(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Pin: ");

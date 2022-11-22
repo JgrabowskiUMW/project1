@@ -34,7 +34,7 @@ public class Bank {
     /**
      * Displays all accounts information.
      */
-    public void displayProfles() {
+    public void displayProfiles() {
         for(Account display: accountList) {
             System.out.printf("%2s%n%2s%n%2d%n%2d%n$%2.2f%n%n", display.getFirstName(), display.getLastName(), display.getAccountNumber(), display.getPin(), display.getAmount());
         }
