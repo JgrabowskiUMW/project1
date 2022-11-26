@@ -19,7 +19,7 @@ public class Bank {
             // Scans user data from file.
             while(scanFile.hasNextLine()) {
                 int user = Integer.parseInt(scanFile.nextLine());
-                int pin = Integer.parseInt(scanFile.nextLine());
+                String pin = scanFile.nextLine();
                 String first = scanFile.nextLine();
                 String last = scanFile.nextLine();
                 double amount = Double.parseDouble(scanFile.nextLine());

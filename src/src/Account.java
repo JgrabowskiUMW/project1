@@ -1,19 +1,36 @@
 package src;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Account {
 
     private String firstName;
     private String lastName;
     private double amount;
     private static int accountNumber;
-    private int pin;
+    private String pin;
 
-    public Account(int u, int p, String f, String l, double a) {
+    public Account(int u, String p, String f, String l, double a) {
         accountNumber = u;
-        pin = p;
         firstName = f;
         lastName = l;
         amount = a;
+        pin = p;
+        String generatedPin = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(pin.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPin = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        pin = generatedPin;
     }
 
     public String getFirstName() {
@@ -48,11 +65,11 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
