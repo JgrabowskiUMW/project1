@@ -43,7 +43,7 @@ public class Login {
 
         public PinPage() {
             //add actionListener to the JButton
-            enter.addActionListener(new ButtonListener(textField));
+            enter.addActionListener(new ButtonListener(textField, frame));
 
             //create layout and allow for the GUI to close on exit
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

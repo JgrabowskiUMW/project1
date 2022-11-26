@@ -8,9 +8,9 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        /*PinPage pinPage = new PinPage();
+        PinPage pinPage = new PinPage();
 
-        File file = new File("accountinfo");
+        /*File file = new File("accountinfo");
         Login accounts = new Login();
         accounts.startingAccounts(file);
         boolean keepOn = true;*/
