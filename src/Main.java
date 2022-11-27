@@ -1,5 +1,3 @@
-package src.src;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +6,7 @@ import java.io.File;
 public class Main {
 
     public static void main(String[] args) {
-        PinPage pinPage = new PinPage();
+        //PinPage pinPage = new PinPage();
 
         /*File file = new File("accountinfo");
         Login accounts = new Login();
