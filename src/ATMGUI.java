@@ -3,13 +3,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
+
 // for depositing money into an account
 class DepositAction implements ActionListener {
     private int amount;
     private JButton button;
+    private Account account;
 
-    DepositAction(JButton button) {
+    DepositAction(JButton button, Account current) {
         this.button = button;
+        this.account = current;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -35,12 +40,17 @@ class WithdrawAction implements ActionListener {
 class CheckBalanceAction implements ActionListener {
     private JButton button;
     private Account current;
+    private JFrame frame;
 
-    CheckBalanceAction(JButton button) {
+    CheckBalanceAction(JButton button, Account current, JFrame frame) {
         this.button = button;
+        this.current = current;
+        this.frame = frame;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.current.getAmount();
+
 
     }
 }
@@ -60,7 +70,23 @@ class LogAction implements ActionListener {
     }
 }
 public class ATMGUI {
-    ATMGUI() {
+    private String pin;
+    ATMGUI(String pin) {
+        //creates bank object to retrieve account list
+        Bank bank = new Bank(new File("accountinfo"));
+        ArrayList<Account> accountList = new ArrayList<>();
+        accountList = bank.getAccountList();
+
+        //creates account by testing given pin against pins from the list
+        Account current = null;
+        for (int i = 0; i < accountList.size(); i++) {
+            Account test = accountList.get(i);
+            String testPin = test.getPin();
+            if (testPin.equals(pin)) {
+                current = test;
+            }
+        }
+
         //creates a JFrame and sets the close action
         JFrame frame = new JFrame("Welcome!");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,10 +97,10 @@ public class ATMGUI {
         grid.setLayout(layout);
 
         //adds the buttons and their label to the grid
-        addButton(grid, "Check Balance", frame);
-        addButton(grid, "Deposit", frame);
-        addButton(grid, "Withdraw", frame);
-        addButton(grid, "Logout", frame);
+        addButton(grid, "Check Balance", frame, current);
+        addButton(grid, "Deposit", frame, current);
+        addButton(grid, "Withdraw", frame, current);
+        addButton(grid, "Logout", frame, current);
 
         //adding the grid to the frame and then setting the visibility so the frame will be displayed
         frame.getContentPane().add(grid);
@@ -82,15 +108,15 @@ public class ATMGUI {
         frame.setVisible(true);
     }
 
-    public static void addButton(JPanel grid, String name, JFrame frame) {
+    public static void addButton(JPanel grid, String name, JFrame frame, Account current) {
         // creates a button then adds an action listener based on the function of the button
         JButton button = new JButton();
         if (name.equals("Check Balance")) {
-            CheckBalanceAction check = new CheckBalanceAction(button);
+            CheckBalanceAction check = new CheckBalanceAction(button, current, frame);
             button.addActionListener(check);
         }
         else if (name.equals("Deposit")) {
-            DepositAction deposit = new DepositAction(button);
+            DepositAction deposit = new DepositAction(button, current);
             button.addActionListener(deposit);
         }
         else if (name.equals("Withdraw")) {

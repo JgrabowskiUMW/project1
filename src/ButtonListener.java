@@ -20,15 +20,13 @@ public class ButtonListener implements ActionListener {
         String pin = this.textField.getText();
 
         //hashes the given pin to be tested
-        Account test  = new Account(pin);
-
 
 
         //calls a checkPin method in order to see if the given pin matches any accounts
 
         //if the pin matches an accounts pin, open the ATMGUI and close the PinPage
         this.frame.dispose();
-        ATMGUI atm = new ATMGUI();
+        ATMGUI atm = new ATMGUI(pin);
 
 
 

@@ -33,7 +33,7 @@ public class Account {
     }
     public Account (String pin) {
         this.pin = pin;
-        String generatedPin = null;
+       /* String generatedPin = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(pin.getBytes());
@@ -46,7 +46,7 @@ public class Account {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        this.pin = generatedPin;
+        this.pin = generatedPin; */
     }
 
     public String getFirstName() {
