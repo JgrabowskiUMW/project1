@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,6 +37,19 @@ public class Bank {
     public void displayProfiles() {
         for(Account display: accountList) {
             System.out.printf("%2s%n%2s%n%2d%n%2s%n$%2.2f%n%n", display.getFirstName(), display.getLastName(), display.getAccountNumber(), display.getPin(), display.getAmount());
+        }
+    }
+
+    public void save() {
+        File file = new File("accountinfo");
+        try {
+            PrintWriter out = new PrintWriter(file);
+            for (Account a : accountList) {
+                a.save(out);
+            }
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();;
         }
     }
 

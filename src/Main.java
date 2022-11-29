@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -29,7 +30,14 @@ public class Main {
         //System.out.println(me.getPin());
 
         Bank bank = new Bank(new File("accountinfo"));
-        bank.displayProfiles();
+        ArrayList<Account> accounts = new ArrayList<>();
+        accounts = bank.getAccountList();
+        System.out.println(accounts.get(0));
+        accounts.get(0).addToAccount(100.0);
+        //System.out.println(accounts.get(0));
+        accounts = bank.getAccountList();
+        System.out.println(bank.getAccountList());
+        bank.save();
     }
 
 }
