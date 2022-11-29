@@ -34,6 +34,7 @@ class WithdrawAction implements ActionListener {
 // for checking the balance of an account
 class CheckBalanceAction implements ActionListener {
     private JButton button;
+    private Account current;
 
     CheckBalanceAction(JButton button) {
         this.button = button;
@@ -46,13 +47,16 @@ class CheckBalanceAction implements ActionListener {
 //button listener for logging out of the account (Closing Program)
 class LogAction implements ActionListener {
     private JButton button;
+    private JFrame frame;
 
-    LogAction(JButton button) {
+    LogAction(JButton button, JFrame frame) {
         this.button = button;
+        this.frame = frame;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        frame.dispose();
+        PinPage pinPage = new PinPage();
     }
 }
 public class ATMGUI {
@@ -67,10 +71,10 @@ public class ATMGUI {
         grid.setLayout(layout);
 
         //adds the buttons and their label to the grid
-        addButton(grid, "Check Balance");
-        addButton(grid, "Deposit");
-        addButton(grid, "Withdraw");
-        addButton(grid, "Logout");
+        addButton(grid, "Check Balance", frame);
+        addButton(grid, "Deposit", frame);
+        addButton(grid, "Withdraw", frame);
+        addButton(grid, "Logout", frame);
 
         //adding the grid to the frame and then setting the visibility so the frame will be displayed
         frame.getContentPane().add(grid);
@@ -78,7 +82,7 @@ public class ATMGUI {
         frame.setVisible(true);
     }
 
-    public static void addButton(JPanel grid, String name) {
+    public static void addButton(JPanel grid, String name, JFrame frame) {
         // creates a button then adds an action listener based on the function of the button
         JButton button = new JButton();
         if (name.equals("Check Balance")) {
@@ -95,7 +99,7 @@ public class ATMGUI {
 
         }
         else {
-            LogAction log = new LogAction(button);
+            LogAction log = new LogAction(button, frame);
             button.addActionListener(log);
         }
 
