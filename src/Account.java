@@ -1,4 +1,5 @@
 
+import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -47,6 +48,10 @@ public class Account {
             e.printStackTrace();
         }
         this.pin = generatedPin; */
+    }
+
+    public void save (PrintWriter out) {
+        out.print(accountNumber + "\n" + pin + "\n" + firstName + "\n" + lastName + "\n" + amount + "\n");
     }
 
     public String getFirstName() {
@@ -112,5 +117,9 @@ public class Account {
             System.out.println("Balance is insufflation to withdraw from.");
         else
             amount -= withdraw;
+    }
+
+    public String toString() {
+        return accountNumber + "\n" + pin + "\n" + firstName + "\n" + lastName + "\n" + amount;
     }
 }
