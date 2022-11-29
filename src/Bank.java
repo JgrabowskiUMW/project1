@@ -1,4 +1,4 @@
-package src;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -22,8 +22,8 @@ public class Bank {
                 String first = scanFile.nextLine();
                 String last = scanFile.nextLine();
                 double amount = Double.parseDouble(scanFile.nextLine());
-                scanFile.nextLine();
                 accountList.add(new Account(user, pin, first, last, amount));
+                //scanFile.nextLine();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class Bank {
         }
         while(cycle) {
             System.out.println("Welcome " + user.getFirstName() + " " + user.getLastName());
-            System.out.println("Would you like to\n1.Deposit\n2.Withdrawal\n3.End Translation");
+            System.out.println("Would you like to\n1.Deposit\n2.Withdrawal\n3.End Transaction");
             int answer = scan.nextInt();
             switch(answer) {
                 case 1:
