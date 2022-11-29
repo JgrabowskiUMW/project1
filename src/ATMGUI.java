@@ -1,4 +1,4 @@
-
+package src;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,13 +26,16 @@ class DepositAction implements ActionListener {
 class WithdrawAction implements ActionListener {
     private int amount;
     private JButton button;
+    private Account current;
 
-    WithdrawAction(JButton button) {
+    WithdrawAction(JButton button, Account current) {
         this.button = button;
+        this.current = current;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        WithdrawScreen open = new WithdrawScreen(current);
 
     }
 }
@@ -49,9 +52,8 @@ class CheckBalanceAction implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.current.getAmount();
-
-
+        double amount = this.current.getAmount();
+        JOptionPane.showMessageDialog(null, "Your balance is " + amount);
     }
 }
 //button listener for logging out of the account (Closing Program)
@@ -120,7 +122,7 @@ public class ATMGUI {
             button.addActionListener(deposit);
         }
         else if (name.equals("Withdraw")) {
-            WithdrawAction withdraw = new WithdrawAction(button);
+            WithdrawAction withdraw = new WithdrawAction(button, current);
             button.addActionListener(withdraw);
 
         }
