@@ -1,4 +1,4 @@
-package src;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -16,7 +16,7 @@ public class Account {
         lastName = l;
         amount = a;
         pin = p;
-        String generatedPin = null;
+        /*String generatedPin = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(pin.getBytes());
@@ -29,7 +29,7 @@ public class Account {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        pin = generatedPin;
+        pin = generatedPin;*/
     }
     public Account (String pin) {
         this.pin = pin;
