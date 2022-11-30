@@ -19,10 +19,18 @@ class WListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         double withdraw = Double.parseDouble(this.textField.getText());
-        current.withdrawFromAccount(withdraw);
-        double amount = current.getAmount();
-        JOptionPane.showMessageDialog(null, "Your new balance is $" + amount);
-        frame.dispose();
+        if (current.getAmount() < withdraw) {
+            double amount = current.getAmount();
+            JOptionPane.showMessageDialog(null, "Error: Insufficient funds for withdraw.\n" +
+                    "the most you can withdraw is $" + amount);
+
+        }
+        else {
+            current.withdrawFromAccount(withdraw);
+            double amount = current.getAmount();
+            JOptionPane.showMessageDialog(null, "Your new balance is $" + amount);
+            frame.dispose();
+        }
     }
 }
 

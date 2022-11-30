@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class PinPage{
     //create frame, text field to enter the pin, and a button to continue
     JFrame frame = new JFrame("Pin Page");
+
     JTextField textField = new JTextField();
     JButton enter = new JButton("Enter");
 
