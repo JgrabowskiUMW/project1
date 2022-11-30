@@ -10,15 +10,16 @@ import java.util.ArrayList;
 class DepositAction implements ActionListener {
     private int amount;
     private JButton button;
-    private Account account;
+    private Account current;
 
     DepositAction(JButton button, Account current) {
         this.button = button;
-        this.account = current;
+        this.current = current;
+
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        DepositScreen depositScreen = new DepositScreen(current);
     }
 }
 

@@ -9,16 +9,20 @@ import java.util.ArrayList;
 class WListener implements ActionListener {
     private JTextField textField;
     private Account current;
-   public WListener(JTextField textField, Account current) {
+    private JFrame frame;
+   public WListener(JTextField textField, Account current, JFrame frame) {
         this.textField = textField;
         this.current = current;
+        this.frame = frame;
+
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        int withdraw = Integer.parseInt(this.textField.getText());
+        double withdraw = Double.parseDouble(this.textField.getText());
         current.withdrawFromAccount(withdraw);
         double amount = current.getAmount();
         JOptionPane.showMessageDialog(null, "Your new balance is $" + amount);
+        frame.dispose();
     }
 }
 
@@ -29,7 +33,7 @@ public class WithdrawScreen {
     JButton button = new JButton("Enter");
 
     public WithdrawScreen (Account current) {
-        button.addActionListener(new WListener(textField, current));
+        button.addActionListener(new WListener(textField, current, frame));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
