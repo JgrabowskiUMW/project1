@@ -1,4 +1,4 @@
-
+package src;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +17,8 @@ class WListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int withdraw = Integer.parseInt(this.textField.getText());
         current.withdrawFromAccount(withdraw);
+        double amount = current.getAmount();
+        JOptionPane.showMessageDialog(null, "Your new balance is $" + amount);
     }
 }
 
@@ -33,7 +35,7 @@ public class WithdrawScreen {
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
          double amount = current.getAmount();
          frame.add(new JLabel("How much do you want to withdraw: "));
-         frame.add(new JLabel("Your current balance is " + amount));
+         frame.add(new JLabel("Your current balance is $" + amount));
          frame.add(textField);
          frame.add(button);
 

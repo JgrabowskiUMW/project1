@@ -1,4 +1,4 @@
-
+package src;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -45,7 +45,7 @@ public class Bank {
         try {
             PrintWriter out = new PrintWriter(file);
             for (Account a : accountList) {
-                a.save(out);
+               // a.save(out);
             }
             out.close();
         } catch (FileNotFoundException e) {
