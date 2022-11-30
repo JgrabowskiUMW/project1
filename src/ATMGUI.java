@@ -80,7 +80,7 @@ class LogAction implements ActionListener {
         this.current = current;
     }
 
-    //actoinPerformed, saves all changes done to the file and then closes the ATMCUI
+    //actionPerformed, saves all changes done to the file and then closes the ATMCUI
     //Additionally, it will open the PinPage back up for someone else to log in
     @Override
     public void actionPerformed(ActionEvent e) {

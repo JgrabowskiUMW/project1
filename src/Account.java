@@ -2,6 +2,7 @@ package src;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 
 public class Account {
 
@@ -10,6 +11,7 @@ public class Account {
     private double amount;
     private static int accountNumber;
     private String pin;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public Account(int u, String p, String f, String l, double a) {
         accountNumber = u;
@@ -50,7 +52,8 @@ public class Account {
         this.pin = generatedPin; */
     }
     public void save(PrintWriter out) {
-        out.print(accountNumber + "\n" + pin + "\n" + firstName + "\n" + lastName + "\n" + amount + "\n");
+        String a = String.format("%2.2f", amount);
+        out.print(accountNumber + "\n" + pin + "\n" + firstName + "\n" + lastName + "\n" + a + "\n");
     }
 
     public String getFirstName() {
@@ -112,9 +115,6 @@ public class Account {
     }
 
     public void withdrawFromAccount(double withdraw) {
-        if(amount - withdraw < 0)
-            System.out.println("Balance is insufflation to withdraw from.");
-        else
-            amount -= withdraw;
+        df.format(amount-=withdraw);
     }
 }

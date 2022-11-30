@@ -5,11 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 class WListener implements ActionListener {
     private JTextField textField;
     private Account current;
     private JFrame frame;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
    public WListener(JTextField textField, Account current, JFrame frame) {
         this.textField = textField;
         this.current = current;
@@ -26,8 +28,8 @@ class WListener implements ActionListener {
 
         }
         else {
-            current.withdrawFromAccount(withdraw);
-            double amount = current.getAmount();
+            current.withdrawFromAccount(Double.parseDouble(df.format(withdraw)));
+            double amount = Double.parseDouble(df.format(current.getAmount()));
             JOptionPane.showMessageDialog(null, "Your new balance is $" + amount);
             frame.dispose();
         }
