@@ -12,12 +12,15 @@ class DepositAction implements ActionListener {
     private JButton button;
     private Account current;
 
-    DepositAction(JButton button, Account current) {
+    //constructor
+    public DepositAction(JButton button, Account current) {
         this.button = button;
         this.current = current;
 
     }
-    @Override
+
+    //acitonPerformed opens a new window for the user to deposit money into the account
+     @Override
     public void actionPerformed(ActionEvent e) {
         DepositScreen depositScreen = new DepositScreen(current);
     }
@@ -29,11 +32,13 @@ class WithdrawAction implements ActionListener {
     private JButton button;
     private Account current;
 
+    //constructor
     WithdrawAction(JButton button, Account current) {
         this.button = button;
         this.current = current;
     }
 
+    //actionPerformed for opening a screen to withdraw from the account
     @Override
     public void actionPerformed(ActionEvent e) {
         WithdrawScreen open = new WithdrawScreen(current);
@@ -46,11 +51,14 @@ class CheckBalanceAction implements ActionListener {
     private Account current;
     private JFrame frame;
 
-    CheckBalanceAction(JButton button, Account current, JFrame frame) {
+    //constructor
+   public CheckBalanceAction(JButton button, Account current, JFrame frame) {
         this.button = button;
         this.current = current;
         this.frame = frame;
     }
+
+    //actionPerformed, creates a pop up window showing the current balance of the open account
     @Override
     public void actionPerformed(ActionEvent e) {
         double amount = this.current.getAmount();
@@ -64,12 +72,16 @@ class LogAction implements ActionListener {
     private Bank bank;
     private Account current;
 
-    LogAction(JButton button, JFrame frame, Bank bank, Account current) {
+    //constructor
+   public LogAction(JButton button, JFrame frame, Bank bank, Account current) {
         this.button = button;
         this.frame = frame;
         this.bank = bank;
         this.current = current;
     }
+
+    //actoinPerformed, saves all changes done to the file and then closes the ATMCUI
+    //Additionally, it will open the PinPage back up for someone else to log in
     @Override
     public void actionPerformed(ActionEvent e) {
         bank.save();
@@ -79,7 +91,9 @@ class LogAction implements ActionListener {
 }
 public class ATMGUI {
     private String pin;
-    ATMGUI(String pin) {
+
+    //constructor, takes in pin from PinPage in order to open the account
+   public ATMGUI(String pin) {
         //creates bank object to retrieve account list
         Bank bank = new Bank(new File("accountinfo"));
         ArrayList<Account> accountList = new ArrayList<>();
@@ -116,6 +130,8 @@ public class ATMGUI {
         frame.setVisible(true);
     }
 
+    //method that takes all information needed for any button and creates them
+    //also sets their ActionListener to the correct listener
     public static void addButton(JPanel grid, String name, JFrame frame, Account current, Bank bank) {
         // creates a button then adds an action listener based on the function of the button
         JButton button = new JButton();
