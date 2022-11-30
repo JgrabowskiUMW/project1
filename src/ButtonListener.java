@@ -1,7 +1,8 @@
-package src;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ButtonListener implements ActionListener {
         //pulling number from the text field
         String pin = this.textField.getText();
         //hashes the given pin to be tested
-       /* String generatedPin = null;
+        String generatedPin = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(pin.getBytes());
@@ -38,11 +39,18 @@ public class ButtonListener implements ActionListener {
         pin = generatedPin;
         //calls a checkPin method in order to see if the given pin matches any accounts
         ArrayList<Account> accounts = new ArrayList<>();
-        //if the pin matches an accounts pin, open the ATMGUI and close the PinPage*/
-        this.frame.dispose();
-        ATMGUI atm = new ATMGUI(pin);
-
-
-
+        Bank bank = new Bank(new File("accountinfo"));
+        accounts = bank.getAccountList();
+        Account current = null;
+        for (int i = 0; i < accounts.size(); i++) {
+            Account test = accounts.get(i);
+            String testPin = test.getPin();
+            if (testPin.equals(pin)) {
+                current = test;
+                //if the pin matches an accounts pin, open the ATMGUI and close the PinPage
+                this.frame.dispose();
+                ATMGUI atm = new ATMGUI(pin);
+            }
+        }
     }
 }
