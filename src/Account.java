@@ -1,4 +1,4 @@
-
+package src;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -116,5 +116,10 @@ public class Account {
 
     public void withdrawFromAccount(double withdraw) {
         df.format(amount-=withdraw);
+    }
+
+    public String toString() {
+        String n = "First Name: " + this.firstName + "\n" + "Last Name: " + this.lastName + "\n" + "Account Number: " + this.accountNumber;
+        return n;
     }
 }

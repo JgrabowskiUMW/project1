@@ -1,4 +1,4 @@
-
+package src;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -89,6 +89,20 @@ class LogAction implements ActionListener {
         PinPage pinPage = new PinPage();
     }
 }
+
+class AccountInfoListener implements ActionListener {
+    private Account current;
+
+    public AccountInfoListener(Account current) {
+        this.current = current;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String n = current.toString();
+        JOptionPane.showMessageDialog(null, "Your information: \n" + n);
+    }
+}
 public class ATMGUI {
     private String pin;
 
@@ -115,10 +129,11 @@ public class ATMGUI {
 
         //Creates a new GridLayout for the main display of the ATM
         JPanel grid = new JPanel();
-        GridLayout layout = new GridLayout(4,2);
+        GridLayout layout = new GridLayout(5,2);
         grid.setLayout(layout);
 
         //adds the buttons and their label to the grid
+       addButton(grid, "Account Information", frame, current, bank);
         addButton(grid, "Check Balance", frame, current, bank);
         addButton(grid, "Deposit", frame, current, bank);
         addButton(grid, "Withdraw", frame, current, bank);
@@ -147,6 +162,10 @@ public class ATMGUI {
             WithdrawAction withdraw = new WithdrawAction(button, current);
             button.addActionListener(withdraw);
 
+        }
+        else if (name.equals("Account Information")) {
+            AccountInfoListener info = new AccountInfoListener(current);
+            button.addActionListener(info);
         }
         else {
             LogAction log = new LogAction(button, frame, bank, current);
