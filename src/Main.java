@@ -29,7 +29,7 @@ public class Main {
         //Account me = new Account(1311, "1123", "Tamarcus", "Daniel", 5000);
         //System.out.println(me.getPin());
 
-        Bank bank = new Bank(new File("accountinfo"));
+       /* Bank bank = new Bank(new File("accountinfo"));
         ArrayList<Account> accounts = new ArrayList<>();
         accounts = bank.getAccountList();
         System.out.println(accounts.get(0));
@@ -37,7 +37,7 @@ public class Main {
         //System.out.println(accounts.get(0));
         accounts = bank.getAccountList();
         System.out.println(bank.getAccountList());
-        bank.save();
+        bank.save();*/
     }
 
 }
