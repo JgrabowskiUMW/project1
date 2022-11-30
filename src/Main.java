@@ -8,9 +8,6 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        //Temarcus 1102
-        //Austin 3297
-        //Jon 1123
         PinPage pinPage = new PinPage();
 
         /*File file = new File("accountinfo");
