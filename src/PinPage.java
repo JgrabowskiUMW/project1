@@ -1,8 +1,6 @@
 package src;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class PinPage{
     //create frame, text field to enter the pin, and a button to continue

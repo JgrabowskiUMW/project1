@@ -89,7 +89,7 @@ class LogAction implements ActionListener {
         PinPage pinPage = new PinPage();
     }
 }
-
+// Listener for button to display open account's information
 class AccountInfoListener implements ActionListener {
     private Account current;
 

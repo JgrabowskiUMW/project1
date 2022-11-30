@@ -37,7 +37,7 @@ public class ButtonListener implements ActionListener {
             a.printStackTrace();
         }
         pin = generatedPin;
-        //calls a checkPin method in order to see if the given pin matches any accounts
+        //checks the given hashed pin against those in accountinfo
         ArrayList<Account> accounts = new ArrayList<>();
         Bank bank = new Bank(new File("accountinfo"));
         accounts = bank.getAccountList();

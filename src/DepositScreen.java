@@ -2,9 +2,8 @@ package src;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
 
+//Listener for deposit window
 class DListener implements ActionListener {
     private JTextField textField;
     private Account current;
@@ -15,6 +14,8 @@ class DListener implements ActionListener {
         this.frame = frame;
 
     }
+
+    //actionPerformed, gets deposit amount, then adds it to the account
     @Override
     public void actionPerformed(ActionEvent e) {
         double deposit = Double.parseDouble(this.textField.getText());
@@ -31,6 +32,7 @@ public class DepositScreen {
     JTextField textField = new JTextField();
     JButton button = new JButton("Enter");
 
+    //constructor for deposit window
     public DepositScreen (Account current) {
         button.addActionListener(new DListener(textField, current, frame));
 

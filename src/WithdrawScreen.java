@@ -3,8 +3,6 @@ package src;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
 import java.text.DecimalFormat;
 
 class WListener implements ActionListener {
@@ -12,12 +10,16 @@ class WListener implements ActionListener {
     private Account current;
     private JFrame frame;
     private static final DecimalFormat df = new DecimalFormat("0.00");
+
+    // listener for the withdrawal window
    public WListener(JTextField textField, Account current, JFrame frame) {
         this.textField = textField;
         this.current = current;
         this.frame = frame;
-
     }
+
+    //actionPerformed, gets amount to withdraw from user, checks if there is that much in the account
+    //if there are insufficient funds, it alerts the user, if there are sufficient funds, it will withdraw from account
     @Override
     public void actionPerformed(ActionEvent e) {
         double withdraw = Double.parseDouble(this.textField.getText());
@@ -42,6 +44,7 @@ public class WithdrawScreen {
     JTextField textField = new JTextField();
     JButton button = new JButton("Enter");
 
+    //constructor for withdraw window
     public WithdrawScreen (Account current) {
         button.addActionListener(new WListener(textField, current, frame));
 

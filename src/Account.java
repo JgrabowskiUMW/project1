@@ -34,23 +34,6 @@ public class Account {
         }
         pin = generatedPin;*/
     }
-    public Account (String pin) {
-        this.pin = pin;
-       /* String generatedPin = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(pin.getBytes());
-            byte[] bytes = md.digest();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            generatedPin = sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        this.pin = generatedPin; */
-    }
     public void save(PrintWriter out) {
         String a = String.format("%2.2f", amount);
         out.print(accountNumber + "\n" + pin + "\n" + firstName + "\n" + lastName + "\n" + a + "\n");
