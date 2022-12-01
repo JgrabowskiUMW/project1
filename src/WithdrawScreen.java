@@ -32,7 +32,7 @@ class WListener implements ActionListener {
         else {
             current.withdrawFromAccount(Double.parseDouble(df.format(withdraw)));
             double amount = Double.parseDouble(df.format(current.getAmount()));
-            JOptionPane.showMessageDialog(null, "Your new balance is $" + amount);
+            JOptionPane.showMessageDialog(null, "Your new balance is $" + String.format("%.2f", amount));
             frame.dispose();
         }
     }
@@ -52,7 +52,7 @@ public class WithdrawScreen {
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
          double amount = current.getAmount();
          frame.add(new JLabel("How much do you want to withdraw: "));
-         frame.add(new JLabel("Your current balance is $" + amount));
+         frame.add(new JLabel("Your current balance is $" + String.format("%.2f", amount)));
          frame.add(textField);
          frame.add(button);
 
