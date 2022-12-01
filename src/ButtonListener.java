@@ -43,9 +43,8 @@ public class ButtonListener implements ActionListener {
         Bank bank = new Bank(new File("accountinfo"));
         accounts = bank.getAccountList();
         Account current = null;
-        Boolean open = false;
-        for (int i = 0; i < accounts.size(); i++) {
-            Account test = accounts.get(i);
+        boolean open = false;
+        for(Account test: accounts) {
             String testPin = test.getPin();
             if (testPin.equals(pin)) {
                 current = test;
@@ -55,7 +54,18 @@ public class ButtonListener implements ActionListener {
                 ATMGUI atm = new ATMGUI(pin);
             }
         }
-        if (open==false) {
+        /**for (int i = 0; i < accounts.size(); i++) {
+            Account test = accounts.get(i);
+            String testPin = test.getPin();
+            if (testPin.equals(pin)) {
+                current = test;
+                open = true;
+                //if the pin matches an accounts pin, open the ATMGUI and close the PinPage
+                this.frame.dispose();
+                ATMGUI atm = new ATMGUI(pin);
+            }
+        }*/
+        if (!open) {
             JOptionPane.showMessageDialog(null, "Invalid pin, please try again.");
         }
     }
