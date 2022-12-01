@@ -5,11 +5,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Class to create bank object that has a file and an array list with accounts
 public class Bank {
 
     private File filePath;
     private ArrayList<Account> accountList;
 
+    //Bank constructor that takes a file
     public Bank(File path) {
         filePath = path;
         accountList = new ArrayList<>();
@@ -40,6 +42,7 @@ public class Bank {
         }
     }
 
+    //Save method that saves out the accounts in the arraylist to the file
     public void save() {
         File file = new File("accountinfo");
         try {
@@ -53,10 +56,12 @@ public class Bank {
         }
     }
 
+    //Method to get the entries in the array list
     public ArrayList<Account> getAccountList() {
         return accountList;
     }
 
+    //Method to go through banking process of account
     public void banking(Account user) {
         Scanner scan = new Scanner(System.in);
         // cycle is used to allow user to continue to deposit or withdrawal
