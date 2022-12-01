@@ -1,4 +1,4 @@
-package src;
+
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,7 +9,7 @@ public class Account {
     private String firstName;
     private String lastName;
     private double amount;
-    private static int accountNumber;
+    private int accountNumber;
     private String pin;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 

@@ -1,4 +1,4 @@
-package src;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -100,7 +100,7 @@ class AccountInfoListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String n = current.toString();
-        JOptionPane.showMessageDialog(null, "Your information: \n" + n);
+        JOptionPane.showMessageDialog(null, "Account Details: \n" + n);
     }
 }
 public class ATMGUI {
