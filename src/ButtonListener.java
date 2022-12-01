@@ -9,12 +9,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class ButtonListener implements ActionListener {
-    private int num;
+    //private int num;
     private JTextField textField;
     private JFrame frame;
 
     public ButtonListener(JTextField textField, JFrame frame) {
-        this.num = 0;
+        //this.num = 0;
         this.textField = textField;
         this.frame = frame;
 
@@ -54,17 +54,6 @@ public class ButtonListener implements ActionListener {
                 ATMGUI atm = new ATMGUI(pin);
             }
         }
-        /**for (int i = 0; i < accounts.size(); i++) {
-            Account test = accounts.get(i);
-            String testPin = test.getPin();
-            if (testPin.equals(pin)) {
-                current = test;
-                open = true;
-                //if the pin matches an accounts pin, open the ATMGUI and close the PinPage
-                this.frame.dispose();
-                ATMGUI atm = new ATMGUI(pin);
-            }
-        }*/
         if (!open) {
             JOptionPane.showMessageDialog(null, "Invalid pin, please try again.");
         }

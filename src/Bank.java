@@ -42,7 +42,7 @@ public class Bank {
             }
             out.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
 
