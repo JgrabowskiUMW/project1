@@ -1,4 +1,4 @@
-package src;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,7 +55,7 @@ public class ButtonListener implements ActionListener {
             }
         }
         if (open==false) {
-            JOptionPane.showMessageDialog(null, "Invalid pin, try again.");
+            JOptionPane.showMessageDialog(null, "Invalid pin, please try again.");
         }
     }
 }
