@@ -1,7 +1,6 @@
+package src;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,15 +32,6 @@ public class Bank {
         }
     }
 
-    /**
-     * Displays all accounts information.
-     */
-    public void displayProfiles() {
-        for(Account display: accountList) {
-            System.out.printf("%2s%n%2s%n%2d%n%2s%n$%2.2f%n%n", display.getFirstName(), display.getLastName(), display.getAccountNumber(), display.getPin(), display.getAmount());
-        }
-    }
-
     //Save method that saves out the accounts in the arraylist to the file
     public void save() {
         File file = new File("accountinfo");
@@ -59,44 +49,5 @@ public class Bank {
     //Method to get the entries in the array list
     public ArrayList<Account> getAccountList() {
         return accountList;
-    }
-
-    //Method to go through banking process of account
-    public void banking(Account user) {
-        Scanner scan = new Scanner(System.in);
-        // cycle is used to allow user to continue to deposit or withdrawal
-        boolean cycle = false;
-        // saveSlot is user who is logging in.
-        int saveSlot = 0;
-        for(int i = 0; i < accountList.size(); i++) {
-            if(accountList.get(i).equals(user)) {
-                saveSlot = i;
-                cycle = true;
-            }
-        }
-        // If cycle is false.
-        if(!cycle) {
-            System.out.println("No account");
-        }
-        while(cycle) {
-            System.out.println("Welcome " + user.getFirstName() + " " + user.getLastName());
-            System.out.println("Would you like to\n1.Deposit\n2.Withdrawal\n3.End Transaction");
-            int answer = scan.nextInt();
-            switch(answer) {
-                case 1:
-                    System.out.println("How much do you want to deposit: ");
-                    accountList.get(saveSlot).addToAccount(scan.nextDouble());
-                    System.out.println(String.format("%.2f", accountList.get(saveSlot).getAmount()));
-                    break;
-                case 2:
-                    System.out.println("How much do you want to withdrawal: ");
-                    accountList.get(saveSlot).withdrawFromAccount(scan.nextDouble());
-                    System.out.println(String.format("%.2f", accountList.get(saveSlot).getAmount()));
-                    break;
-                case 3:
-                    cycle = false;
-                    break;
-            }
-        }
     }
 }

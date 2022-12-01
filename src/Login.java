@@ -1,4 +1,4 @@
-
+package src;
 
 import javax.swing.*;
 import java.io.File;
@@ -10,29 +10,6 @@ public class Login {
 
     public void startingAccounts(File f) {
         accounts = new Bank(f);
-    }
-
-    /**
-     * Displays profiles of all accounts.
-     */
-    public void display() {
-        accounts.displayProfiles();
-    }
-
-    /**
-     * Checks Pin that user inputs
-     */
-    public void checkPin(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Pin: ");
-        String accountPin = scan.nextLine();
-        for(Account check: accounts.getAccountList()) {
-            // Checks if pin is in system.
-            if(check.getPin().equals(accountPin)) {
-                accounts.banking(check);
-            }
-        }
-
     }
 
     public static class PinPage{
